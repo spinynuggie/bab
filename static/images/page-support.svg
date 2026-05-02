@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Zorg en ondersteuning">
+  <rect width="1600" height="900" fill="#e6eee6"/>
+  <path fill="#fff8ea" d="M0 526c214-76 402-61 564 46 187 124 405 126 653 7 147-70 275-95 383-75v396H0z"/>
+  <path fill="#23463f" opacity=".86" d="M415 563c77-104 177-157 300-158 136-1 248 63 337 192 73-94 164-148 275-162v130c-94 33-170 101-228 204h-111c-88-158-184-238-288-237-104 0-195 78-275 233H306c27-76 63-143 109-202z"/>
+  <circle cx="1185" cy="264" r="145" fill="#d8ad5d" opacity=".52"/>
+</svg>

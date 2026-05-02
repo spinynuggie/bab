@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="Samen in de wijk">
+  <rect width="900" height="1100" fill="#e8efe5"/>
+  <circle cx="706" cy="238" r="130" fill="#d8ad5d" opacity=".6"/>
+  <path fill="#fff8ea" d="M0 712c141-73 260-82 411-29 134 47 281 70 489-25v442H0z"/>
+  <g fill="none" stroke-linecap="round" stroke-width="30">
+    <path stroke="#23463f" d="M215 554c72-89 152-90 241-5"/>
+    <path stroke="#2c7a72" d="M443 612c79-88 170-86 271 8"/>
+    <path stroke="#c46f4b" d="M253 738c147 66 287 66 420-2"/>
+  </g>
+</svg>

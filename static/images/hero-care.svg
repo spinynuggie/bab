@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1200" role="img" aria-label="Warme abstracte zorgomgeving">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#203f3a"/>
+      <stop offset=".55" stop-color="#5b8278"/>
+      <stop offset="1" stop-color="#ead8bd"/>
+    </linearGradient>
+    <radialGradient id="light" cx=".62" cy=".34" r=".54">
+      <stop offset="0" stop-color="#fff6dd" stop-opacity=".82"/>
+      <stop offset=".5" stop-color="#e0b66b" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#18312e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1800" height="1200" fill="url(#sky)"/>
+  <rect width="1800" height="1200" fill="url(#light)"/>
+  <path fill="#f7f1e4" fill-opacity=".82" d="M0 778c190-89 334-107 514-56 178 50 320 50 506-45 203-103 397-115 780 21v502H0z"/>
+  <path fill="#f1dfc3" fill-opacity=".8" d="M0 864c253-78 437-37 651-2 226 37 463-49 642-93 189-47 356-31 507 48v383H0z"/>
+  <g filter="url(#soft)" opacity=".72">
+    <circle cx="323" cy="341" r="170" fill="#e1ad67"/>
+    <circle cx="1314" cy="276" r="250" fill="#f3dfbd"/>
+    <circle cx="1128" cy="783" r="210" fill="#87aa9b"/>
+  </g>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="#fffaf0" stroke-opacity=".82" stroke-width="32" d="M651 620c66-89 156-139 252-139 120 0 212 76 292 176"/>
+    <path stroke="#21463f" stroke-opacity=".55" stroke-width="22" d="M687 725c70 46 143 69 220 69 95 0 183-35 264-104"/>
+    <path stroke="#fffaf0" stroke-opacity=".72" stroke-width="30" d="M766 551c-54-33-115-23-154 21-36 42-41 101-12 148"/>
+    <path stroke="#fffaf0" stroke-opacity=".72" stroke-width="30" d="M1053 551c54-33 115-23 154 21 36 42 41 101 12 148"/>
+  </g>
+  <g fill="#18312e" opacity=".18">
+    <circle cx="714" cy="486" r="34"/>
+    <circle cx="1094" cy="486" r="34"/>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="Coaching en gesprek">
+  <rect width="900" height="1100" fill="#efe7d8"/>
+  <path fill="#9fb9a8" opacity=".55" d="M0 0h900v410C736 358 606 356 475 402 278 471 139 449 0 374z"/>
+  <circle cx="278" cy="394" r="93" fill="#23463f" opacity=".88"/>
+  <circle cx="622" cy="456" r="116" fill="#c46f4b" opacity=".78"/>
+  <path fill="none" stroke="#fffdf8" stroke-linecap="round" stroke-width="28" d="M214 640h474M277 735h346M336 830h228"/>
+  <path fill="none" stroke="#23463f" stroke-linecap="round" stroke-width="18" d="M318 558c68 52 158 76 270 72"/>
+</svg>

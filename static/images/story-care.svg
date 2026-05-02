@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="Rustige zorgillustratie">
+  <rect width="900" height="1100" fill="#dfe8de"/>
+  <path fill="#f7f1e4" d="M0 713c122-66 236-70 342-13 136 72 263 49 392-10 69-31 125-47 166-47v457H0z"/>
+  <circle cx="640" cy="270" r="170" fill="#d8ad5d" opacity=".52"/>
+  <path fill="none" stroke="#23463f" stroke-linecap="round" stroke-width="34" d="M240 552c80-117 205-158 329-111 57 21 105 56 146 104"/>
+  <path fill="none" stroke="#c46f4b" stroke-linecap="round" stroke-width="24" d="M240 652c111 74 228 84 352 32"/>
+</svg>
