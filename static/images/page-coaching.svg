@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Begeleiding en coaching">
-  <rect width="1600" height="900" fill="#efe7d8"/>
-  <path fill="#9fb9a8" opacity=".58" d="M0 0h1600v370c-191 85-375 98-552 39-221-74-420-52-597 64C295 575 144 607 0 557z"/>
+  <rect width="1600" height="900" fill="#eef5ff"/>
+  <path fill="#b9d7ff" opacity=".58" d="M0 0h1600v370c-191 85-375 98-552 39-221-74-420-52-597 64C295 575 144 607 0 557z"/>
   <g fill="none" stroke-linecap="round">
-    <path stroke="#23463f" stroke-width="32" d="M332 617h936"/>
+    <path stroke="#102d54" stroke-width="32" d="M332 617h936"/>
     <path stroke="#c46f4b" stroke-width="32" d="M442 512h392"/>
-    <path stroke="#d8ad5d" stroke-width="32" d="M736 410h422"/>
+    <path stroke="#d69656" stroke-width="32" d="M736 410h422"/>
   </g>
-  <circle cx="348" cy="324" r="86" fill="#23463f" opacity=".86"/>
+  <circle cx="348" cy="324" r="86" fill="#102d54" opacity=".86"/>
   <circle cx="1248" cy="588" r="118" fill="#c46f4b" opacity=".65"/>
 </svg>

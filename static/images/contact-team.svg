@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-label="Zorgteam overleg">
-  <rect width="900" height="700" fill="#f4ecdd"/>
-  <path fill="#dfe8de" d="M0 0h900v315c-130 65-258 73-383 23-172-69-344-38-517 93z"/>
+  <rect width="900" height="700" fill="#f6f9ff"/>
+  <path fill="#e8f2ff" d="M0 0h900v315c-130 65-258 73-383 23-172-69-344-38-517 93z"/>
   <g fill="none" stroke-linecap="round" stroke-width="24">
-    <path stroke="#23463f" d="M170 478h560"/>
+    <path stroke="#102d54" d="M170 478h560"/>
     <path stroke="#c46f4b" d="M260 374h382"/>
-    <path stroke="#d8ad5d" d="M336 274h227"/>
+    <path stroke="#d69656" d="M336 274h227"/>
   </g>
-  <circle cx="214" cy="244" r="58" fill="#23463f" opacity=".88"/>
-  <circle cx="687" cy="442" r="74" fill="#2c7a72" opacity=".72"/>
+  <circle cx="214" cy="244" r="58" fill="#102d54" opacity=".88"/>
+  <circle cx="687" cy="442" r="74" fill="#2868c7" opacity=".72"/>
 </svg>

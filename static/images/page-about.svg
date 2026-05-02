@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Samenwerking in zorg">
-  <rect width="1600" height="900" fill="#f4ecdd"/>
-  <path fill="#dfe8de" d="M0 0h1600v430c-236 71-407 54-622 5-207-47-408-42-978 95z"/>
-  <path fill="#23463f" opacity=".9" d="M230 600c155-194 363-250 607-170 170 56 321 51 533-31v126c-220 111-411 132-605 68-194-64-348-20-535 159z"/>
-  <path fill="none" stroke="#d8ad5d" stroke-linecap="round" stroke-width="28" d="M338 296c157 64 319 66 486 7 136-48 266-55 390-16"/>
+  <rect width="1600" height="900" fill="#f6f9ff"/>
+  <path fill="#e8f2ff" d="M0 0h1600v430c-236 71-407 54-622 5-207-47-408-42-978 95z"/>
+  <path fill="#102d54" opacity=".9" d="M230 600c155-194 363-250 607-170 170 56 321 51 533-31v126c-220 111-411 132-605 68-194-64-348-20-535 159z"/>
+  <path fill="none" stroke="#d69656" stroke-linecap="round" stroke-width="28" d="M338 296c157 64 319 66 486 7 136-48 266-55 390-16"/>
 </svg>

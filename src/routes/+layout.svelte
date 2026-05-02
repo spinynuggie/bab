@@ -9,10 +9,11 @@
 
 	let { children } = $props();
 	let previousPath = $state(page.url.pathname);
-	let headerProgress = $state(0);
+	let menuOpen = $state(false);
+	let headerProgress = $state(page.url.pathname === '/' ? 0 : 1);
 
 	const routeProgress = new Tween(1, {
-		duration: 720,
+		duration: 560,
 		easing: cubicOut
 	});
 
@@ -27,22 +28,53 @@
 
 	const isActive = (href: string) =>
 		href === '/' ? page.url.pathname === '/' : page.url.pathname === href;
-
-	const clamp = (value: number) => Math.min(1, Math.max(0, value));
-	const mix = (from: number, to: number, amount: number) => Math.round(from + (to - from) * amount);
+	const isHome = $derived(page.url.pathname === '/');
+	const ease = (value: number) => value * value * (3 - 2 * value);
+	const delayed = (value: number, start: number) =>
+		Math.min(1, Math.max(0, (value - start) / (1 - start)));
+	const headerTone = $derived(isHome ? headerProgress : 1);
+	const headerSurface = $derived(isHome ? ease(delayed(headerProgress, 0.42)) : 1);
 	const headerColor = $derived(
-		page.url.pathname === '/'
-			? `rgb(${mix(255, 24, headerProgress)}, ${mix(255, 49, headerProgress)}, ${mix(255, 46, headerProgress)})`
-			: 'rgb(24, 49, 46)'
+		`rgb(${Math.round(255 + (16 - 255) * headerTone)}, ${Math.round(
+			255 + (45 - 255) * headerTone
+		)}, ${Math.round(255 + (84 - 255) * headerTone)})`
 	);
-	const headerLine = $derived(
-		page.url.pathname === '/'
-			? `rgba(24, 49, 46, ${headerProgress * 0.14})`
-			: 'rgba(35, 70, 63, 0.14)'
+	const headerNavColor = $derived(
+		`rgb(${Math.round(255 + (55 - 255) * headerTone)}, ${Math.round(
+			255 + (81 - 255) * headerTone
+		)}, ${Math.round(255 + (111 - 255) * headerTone)})`
 	);
-	const headerBgOpacity = $derived(
-		page.url.pathname === '/' ? Math.max(0, (headerProgress - 0.72) / 0.28) : 1
+	const headerBackgroundOpacity = $derived(isHome ? headerSurface * 0.46 : 0.58);
+	const headerLineOpacity = $derived(isHome ? headerSurface * 0.18 : 0.18);
+	const headerBlur = $derived(`${Math.round((isHome ? headerSurface : 1) * 22)}px`);
+	const headerGlassOpacity = $derived(isHome ? headerSurface : 1);
+	const menuButtonBackground = $derived(
+		isHome && headerProgress < 0.45 ? 'rgba(255, 255, 255, 0.14)' : '#ffffff'
 	);
+
+	onMount(() => {
+		let frame = 0;
+
+		const update = () => {
+			frame = 0;
+			headerProgress = page.url.pathname === '/' ? Math.min(1, window.scrollY / 220) : 1;
+		};
+
+		const schedule = () => {
+			if (frame) return;
+			frame = requestAnimationFrame(update);
+		};
+
+		update();
+		window.addEventListener('scroll', schedule, { passive: true });
+		window.addEventListener('resize', schedule);
+
+		return () => {
+			if (frame) cancelAnimationFrame(frame);
+			window.removeEventListener('scroll', schedule);
+			window.removeEventListener('resize', schedule);
+		};
+	});
 
 	$effect(() => {
 		const currentPath = page.url.pathname;
@@ -52,10 +84,9 @@
 		}
 
 		previousPath = currentPath;
+		menuOpen = false;
 		headerProgress =
-			currentPath === '/' && typeof window !== 'undefined'
-				? clamp(window.scrollY / Math.min(window.innerHeight * 0.72, 620))
-				: 1;
+			currentPath === '/' && typeof window !== 'undefined' ? Math.min(1, window.scrollY / 220) : 1;
 
 		if (prefersReducedMotion.current) {
 			routeProgress.set(1, { duration: 0 });
@@ -63,34 +94,7 @@
 		}
 
 		routeProgress.set(0, { duration: 0 });
-		routeProgress.set(1, { duration: 780, easing: cubicOut });
-	});
-
-	onMount(() => {
-		let frame = 0;
-
-		const updateHeaderProgress = () => {
-			frame = 0;
-			headerProgress =
-				page.url.pathname === '/'
-					? clamp(window.scrollY / Math.min(window.innerHeight * 0.72, 620))
-					: 1;
-		};
-
-		const scheduleHeaderProgress = () => {
-			if (frame) return;
-			frame = requestAnimationFrame(updateHeaderProgress);
-		};
-
-		scheduleHeaderProgress();
-		window.addEventListener('scroll', scheduleHeaderProgress, { passive: true });
-		window.addEventListener('resize', scheduleHeaderProgress);
-
-		return () => {
-			if (frame) cancelAnimationFrame(frame);
-			window.removeEventListener('scroll', scheduleHeaderProgress);
-			window.removeEventListener('resize', scheduleHeaderProgress);
-		};
+		routeProgress.set(1, { duration: 620, easing: cubicOut });
 	});
 </script>
 
@@ -99,7 +103,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
-		href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700;800&display=swap"
+		href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
 		rel="stylesheet"
 	/>
 	<title>Samenbijeen | Persoonlijke zorg en begeleiding</title>
@@ -111,32 +115,48 @@
 
 <div
 	class="site-shell"
-	class:home-shell={page.url.pathname === '/'}
+	class:home-shell={isHome}
 	style:--header-color={headerColor}
-	style:--header-line={headerLine}
-	style:--header-bg-opacity={headerBgOpacity}
+	style:--header-nav-color={headerNavColor}
+	style:--header-bg-opacity={headerBackgroundOpacity}
+	style:--header-line-opacity={headerLineOpacity}
+	style:--header-blur={headerBlur}
+	style:--header-glass-opacity={headerGlassOpacity}
+	style:--menu-button-bg={menuButtonBackground}
 >
 	<header class="site-header">
 		<a class="brand" href={resolve('/')} aria-label="Samenbijeen home">
 			<strong>Samenbijeen</strong>
 		</a>
 
-		<nav class="desktop-nav" aria-label="Hoofdnavigatie">
+		<button
+			class="menu-toggle"
+			type="button"
+			aria-label="Navigatie openen"
+			aria-expanded={menuOpen}
+			aria-controls="site-navigation"
+			onclick={() => (menuOpen = !menuOpen)}
+		>
+			<span></span>
+			<span></span>
+		</button>
+
+		<nav id="site-navigation" class:open={menuOpen} aria-label="Hoofdnavigatie">
 			{#each navItems as item (item.href)}
-				<a class:active={isActive(item.href)} href={resolve(item.href)}>{item.label}</a>
+				<a
+					aria-current={isActive(item.href) ? 'page' : undefined}
+					href={resolve(item.href)}
+					onclick={() => (menuOpen = false)}
+				>
+					{item.label}
+				</a>
 			{/each}
 		</nav>
 	</header>
 
-	<nav class="mobile-nav" aria-label="Mobiele navigatie">
-		{#each navItems as item (item.href)}
-			<a class:active={isActive(item.href)} href={resolve(item.href)}>{item.label}</a>
-		{/each}
-	</nav>
-
 	<main
 		style:opacity={0.18 + routeProgress.current * 0.82}
-		style:transform={`translate3d(0, ${(1 - routeProgress.current) * 18}px, 0)`}
+		style:transform={`translate3d(0, ${(1 - routeProgress.current) * 16}px, 0)`}
 	>
 		{@render children()}
 	</main>

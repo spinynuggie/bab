@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Hulpvraag en rust">
   <rect width="1600" height="900" fill="#e9efe5"/>
-  <circle cx="1115" cy="245" r="190" fill="#d8ad5d" opacity=".48"/>
-  <path fill="#fff8ea" d="M0 630c275-132 485-111 735-40 258 73 522 45 865-93v403H0z"/>
-  <path fill="none" stroke="#23463f" stroke-linecap="round" stroke-width="36" d="M338 465c105-126 240-167 405-122 103 29 196 84 279 165"/>
+  <circle cx="1115" cy="245" r="190" fill="#d69656" opacity=".48"/>
+  <path fill="#f7fbff" d="M0 630c275-132 485-111 735-40 258 73 522 45 865-93v403H0z"/>
+  <path fill="none" stroke="#102d54" stroke-linecap="round" stroke-width="36" d="M338 465c105-126 240-167 405-122 103 29 196 84 279 165"/>
   <path fill="none" stroke="#c46f4b" stroke-linecap="round" stroke-width="24" d="M419 642c216 93 434 88 655-16"/>
 </svg>

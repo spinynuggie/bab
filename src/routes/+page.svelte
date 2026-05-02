@@ -2,62 +2,60 @@
 	import { resolve } from '$app/paths';
 	import { onMount } from 'svelte';
 
-	let scrollHero: HTMLElement;
+	let heroElement: HTMLElement;
 	let heroProgress = $state(0);
 
 	const clamp = (value: number) => Math.min(1, Math.max(0, value));
-	const mix = (from: number, to: number, amount: number) => Math.round(from + (to - from) * amount);
-
+	const heroVisualOpacity = $derived(1 - heroProgress * 0.78);
+	const heroVisualScale = $derived(1 + heroProgress * 0.055);
+	const heroContentY = $derived(heroProgress * -22);
 	const heroTextColor = $derived(
-		`rgb(${mix(255, 24, heroProgress)}, ${mix(255, 49, heroProgress)}, ${mix(255, 46, heroProgress)})`
+		`rgb(${Math.round(255 + (20 - 255) * heroProgress)}, ${Math.round(
+			255 + (35 - 255) * heroProgress
+		)}, ${Math.round(255 + (59 - 255) * heroProgress)})`
 	);
 	const heroMutedColor = $derived(
-		`rgba(${mix(255, 103, heroProgress)}, ${mix(255, 115, heroProgress)}, ${mix(255, 111, heroProgress)}, ${1 - heroProgress * 0.05})`
+		`rgb(${Math.round(235 + (92 - 235) * heroProgress)}, ${Math.round(
+			244 + (109 - 244) * heroProgress
+		)}, ${Math.round(255 + (134 - 255) * heroProgress)})`
 	);
-	const heroButtonTextColor = $derived(
-		`rgb(${mix(24, 255, heroProgress)}, ${mix(49, 255, heroProgress)}, ${mix(46, 255, heroProgress)})`
-	);
-	const heroImageOpacity = $derived(1 - heroProgress * 0.96);
-	const heroOverlayOpacity = $derived(0.44 - heroProgress * 0.36);
-	const heroImageScale = $derived(1 + heroProgress * 0.08);
-	const heroContentY = $derived(heroProgress * -34);
+	const heroButtonText = $derived(heroProgress < 0.5 ? '#102d54' : '#ffffff');
 
 	onMount(() => {
 		let frame = 0;
 		let heroTop = 0;
 		let heroScrollable = 1;
 
-		const measureHero = () => {
-			if (!scrollHero) return;
-
-			heroTop = scrollHero.offsetTop;
-			heroScrollable = Math.max(1, scrollHero.offsetHeight - window.innerHeight);
+		const measure = () => {
+			if (!heroElement) return;
+			heroTop = heroElement.offsetTop;
+			heroScrollable = Math.max(1, heroElement.offsetHeight - window.innerHeight);
 		};
 
-		const updateHeroProgress = () => {
+		const update = () => {
 			frame = 0;
 			heroProgress = clamp((window.scrollY - heroTop) / heroScrollable);
 		};
 
-		const scheduleHeroProgress = () => {
+		const schedule = () => {
 			if (frame) return;
-			frame = requestAnimationFrame(updateHeroProgress);
+			frame = requestAnimationFrame(update);
 		};
 
-		const handleResize = () => {
-			measureHero();
-			scheduleHeroProgress();
+		const resize = () => {
+			measure();
+			schedule();
 		};
 
-		measureHero();
-		scheduleHeroProgress();
-		window.addEventListener('scroll', scheduleHeroProgress, { passive: true });
-		window.addEventListener('resize', handleResize);
+		measure();
+		schedule();
+		window.addEventListener('scroll', schedule, { passive: true });
+		window.addEventListener('resize', resize);
 
 		return () => {
 			if (frame) cancelAnimationFrame(frame);
-			window.removeEventListener('scroll', scheduleHeroProgress);
-			window.removeEventListener('resize', handleResize);
+			window.removeEventListener('scroll', schedule);
+			window.removeEventListener('resize', resize);
 		};
 	});
 
@@ -106,20 +104,18 @@
 </svelte:head>
 
 <section
-	class="scroll-hero"
-	bind:this={scrollHero}
+	class="hero"
+	bind:this={heroElement}
+	style:--hero-visual-opacity={heroVisualOpacity}
+	style:--hero-visual-scale={heroVisualScale}
+	style:--hero-content-y={`${heroContentY}px`}
 	style:--hero-text={heroTextColor}
 	style:--hero-muted={heroMutedColor}
-	style:--hero-button-text={heroButtonTextColor}
-	style:--hero-image-opacity={heroImageOpacity}
-	style:--hero-overlay-opacity={heroOverlayOpacity}
-	style:--hero-image-scale={heroImageScale}
-	style:--hero-content-y={`${heroContentY}px`}
+	style:--hero-button-text={heroButtonText}
 >
-	<div class="scroll-hero-media" aria-hidden="true"></div>
-	<div class="scroll-hero-overlay" aria-hidden="true"></div>
+	<div class="hero-visual" aria-hidden="true"></div>
 
-	<div class="scroll-hero-content reveal">
+	<div class="hero-copy reveal">
 		<h1>Rustige hulp voor mensen die weer grip willen krijgen.</h1>
 		<p class="lede">
 			Samenbijeen helpt bij vragen die thuis, op school, op werk of in het dagelijks leven te groot
