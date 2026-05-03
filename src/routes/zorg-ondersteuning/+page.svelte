@@ -32,13 +32,17 @@
 	alt="Een open weg als symbool voor stap voor stap vooruitgaan"
 />
 
-<section class="section">
-	<div class="section-heading">
+<section class="section centered-support">
+	<div class="section-heading reveal">
 		<RevealText text="Ambulante begeleiding" />
+		<p>
+			Wij ondersteunen bij onder andere administratie, financiën, het huishouden en het aanbrengen
+			van structuur in het dagelijks leven.
+		</p>
 	</div>
-	<div class="support-grid">
+	<div class="glass-pills support-pills reveal">
 		{#each support as item, index (item)}
-			<div class="reveal" style={`--delay: ${index * 70}ms`}>{item}</div>
+			<span style={`--delay: ${index * 70}ms`}>{item}</span>
 		{/each}
 	</div>
 </section>

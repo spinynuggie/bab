@@ -37,6 +37,6 @@
 
 <svelte:element this={as} bind:this={element} class={`reveal-text ${className}`} class:visible>
 	{#each words as word, index (`${word}-${index}`)}
-		<span style={`--i: ${index}`}>{word}{index < words.length - 1 ? ' ' : ''}</span>
+		<span style={`--i: ${index}`}>{word}</span>
 	{/each}
 </svelte:element>

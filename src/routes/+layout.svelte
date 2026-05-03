@@ -66,8 +66,7 @@
 			'.image-tile',
 			'.wide-photo',
 			'.contact-visual',
-			'.service-card',
-			'.process-step'
+			'.service-card'
 		].join(',');
 
 		const update = () => {

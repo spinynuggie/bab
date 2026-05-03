@@ -158,21 +158,19 @@
 	</div>
 </section>
 
-<section class="section split">
-	<div class="reveal">
+<section class="section centered-support">
+	<div class="section-heading reveal">
 		<RevealText text="Onze begeleiding" />
-	</div>
-	<div class="copy-stack reveal delay-1">
 		<p>
 			Onze missie is om jongeren en volwassenen te begeleiden op weg naar stabiliteit en
 			zelfredzaamheid. De begeleiding is gebaseerd op betrokkenheid, aandacht en maatwerk.
 		</p>
-		<ul class="check-list">
-			{#each highlights as highlight (highlight)}
-				<li>{highlight}</li>
-			{/each}
-		</ul>
 	</div>
+	<ul class="glass-pills reveal">
+		{#each highlights as highlight (highlight)}
+			<li>{highlight}</li>
+		{/each}
+	</ul>
 </section>
 
 <section class="section split">

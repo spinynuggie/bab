@@ -1,7 +1,6 @@
 <script lang="ts">
 	import ResponsiveImage from '$lib/ResponsiveImage.svelte';
 	import RevealText from '$lib/RevealText.svelte';
-	import WidePhoto from '$lib/WidePhoto.svelte';
 
 	const tracks = [
 		{
@@ -35,16 +34,21 @@
 	</p>
 </section>
 
-<WidePhoto
-	src="/images/page-coaching.svg"
-	alt="Abstracte visual over begeleiding en coaching"
-	title="Een veilige en vertrouwde plek"
-	text="Samen kijken we naar wat jij nodig hebt en werken we stap voor stap aan meer kracht, zelfvertrouwen en rust."
-/>
-
-<section class="section split">
-	<div>
-		<RevealText text="Stap voor stap naar rust, overzicht en richting." />
+<section class="section split guidance-section">
+	<div class="copy-stack reveal">
+		<RevealText text="Overzicht, rust en zelfvertrouwen" />
+		<p>
+			Onze begeleiding is gericht op het creëren van overzicht, rust en zelfvertrouwen. Samen kijken
+			we naar wat jij nodig hebt en werken we stap voor stap aan oplossingen die bij jou passen.
+		</p>
+		<div class="guidance-card-list">
+			{#each tracks as track, index (track.title)}
+				<article class="service-card compact reveal" style={`--delay: ${index * 90}ms`}>
+					<h3>{track.title}</h3>
+					<p>{track.text}</p>
+				</article>
+			{/each}
+		</div>
 	</div>
 	<div class="reveal delay-1">
 		<ResponsiveImage
@@ -57,18 +61,6 @@
 	</div>
 </section>
 
-<section class="section">
-	<div class="service-grid">
-		{#each tracks as track, index (track.title)}
-			<article class="service-card reveal" style={`--delay: ${index * 90}ms`}>
-				<span>0{index + 1}</span>
-				<h3>{track.title}</h3>
-				<p>{track.text}</p>
-			</article>
-		{/each}
-	</div>
-</section>
-
 <section class="section quote-section reveal delay-1">
 	<blockquote>“Bij Samenbijeen staan we naast je.”</blockquote>
 	<p>
@@ -78,18 +70,9 @@
 	</p>
 </section>
 
-<section class="section split">
-	<div>
+<section class="section split coaching-section">
+	<div class="copy-stack reveal">
 		<RevealText text="Coaching traject Samenbijeen" />
-	</div>
-	<div class="copy-stack reveal delay-1">
-		<ResponsiveImage
-			class="content-photo"
-			src="/images/content/coaching-journey-900.webp"
-			srcset="/images/content/coaching-journey-900.webp 900w, /images/content/coaching-journey-1400.webp 1400w"
-			sizes="(max-width: 900px) 100vw, 46vw"
-			alt="Rustige reisomgeving als symbool voor afstand nemen en reflectie"
-		/>
 		<p>
 			Wij bieden coaching trajecten aan in binnen- en buitenland. Tijdelijk afstand nemen van de
 			dagelijkse omgeving kan helpen om patronen te doorbreken en ruimte te creëren voor rust,
@@ -99,5 +82,14 @@
 			De trajecten kunnen variëren van een paar dagen of weekend tot langere trajecten. Het doel is
 			dat je sterker, bewuster en met meer vertrouwen terugkeert naar je dagelijks leven.
 		</p>
+	</div>
+	<div class="reveal delay-1">
+		<ResponsiveImage
+			class="content-photo"
+			src="/images/content/coaching-journey-900.webp"
+			srcset="/images/content/coaching-journey-900.webp 900w, /images/content/coaching-journey-1400.webp 1400w"
+			sizes="(max-width: 900px) 100vw, 46vw"
+			alt="Rustige reisomgeving als symbool voor afstand nemen en reflectie"
+		/>
 	</div>
 </section>
