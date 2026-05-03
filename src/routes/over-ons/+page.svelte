@@ -1,12 +1,6 @@
 <script lang="ts">
-	import WidePhoto from '$lib/WidePhoto.svelte';
-
-	const values = [
-		'Vertrouwen',
-		'Gelijkwaardigheid',
-		'Wederzijds begrip',
-		'Aandacht voor ontwikkeling'
-	];
+	import ResponsiveImage from '$lib/ResponsiveImage.svelte';
+	import RevealText from '$lib/RevealText.svelte';
 </script>
 
 <svelte:head>
@@ -14,43 +8,45 @@
 </svelte:head>
 
 <section class="page-hero compact">
-	<h1>Goede kwaliteitszorg is voor iedereen een recht.</h1>
+	<h1>We doen het samen.</h1>
 	<p>
-		Samenbijeen brengt zorgprofessionals en mensen met een zorgvraag bij elkaar voor persoonlijke,
-		passende en kwalitatieve zorg.
+		Samenbijeen biedt professionele begeleiding aan jongeren en volwassenen die tijdelijk vastlopen
+		of de grip op hun leven zijn kwijtgeraakt.
 	</p>
 </section>
 
-<WidePhoto src="/images/page-about.svg" alt="Abstracte visual over samenwerking in zorg" />
+<ResponsiveImage
+	class="wide-content-photo"
+	src="/images/content/home-hero-900.webp"
+	srcset="/images/content/home-hero-900.webp 900w, /images/content/home-hero-1800.webp 1800w"
+	sizes="(max-width: 900px) 100vw, 1180px"
+	alt="Handen die puzzelstukken samenbrengen"
+/>
 
 <section class="section split">
 	<div>
-		<h2>Samen de zorg verbeteren.</h2>
+		<RevealText text="Met praktische en doelgerichte begeleiding" />
 	</div>
 	<div class="copy-stack reveal delay-1">
 		<p>
-			Wij ondersteunen cliënten, naasten en zorginstellingen met zorg die past bij de situatie. De
-			relatie staat centraal: vertrouwen, gelijkwaardigheid, wederzijds begrip en aandacht voor
-			ontwikkeling.
+			Met praktische en doelgerichte begeleiding werken we aan haalbare doelen. Denk aan hulp bij
+			administratie, huishouden en begeleiding om zelfvertrouwen weer terug te winnen.
 		</p>
 		<p>
-			Goede zorg is een recht voor jezelf, je ouders, je naasten en iedereen die het nodig heeft.
-			Daarom kijken wij niet alleen naar de hulpvraag, maar ook naar het systeem en de mensen
-			daaromheen.
+			Onze missie is om mensen te begeleiden op weg naar zelfredzaamheid, rust en stabiliteit. Bij
+			Samenbijeen staan we naast hen.
+		</p>
+		<p>
+			Daarnaast ondersteunen wij zorgorganisaties, gemeenten en samenwerkingspartners bij het
+			inzetten van gekwalificeerde zorgprofessionals.
 		</p>
 	</div>
 </section>
 
-<section class="section">
-	<div class="section-heading">
-		<h2>Een zorgrelatie die werkt.</h2>
-	</div>
-	<div class="value-grid">
-		{#each values as value (value)}
-			<div class="value-card reveal">
-				<span></span>
-				<strong>{value}</strong>
-			</div>
-		{/each}
-	</div>
+<section class="section quote-section reveal delay-1">
+	<blockquote>“Samen kijken we naar mogelijkheden en kracht.”</blockquote>
+	<p>
+		Wij geloven dat echte verandering ontstaat wanneer mensen zich gezien, gehoord en ondersteund
+		voelen. Daarom werken wij vanuit verbinding, betrokkenheid en samenwerking.
+	</p>
 </section>

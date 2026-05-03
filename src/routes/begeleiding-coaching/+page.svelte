@@ -1,11 +1,25 @@
 <script lang="ts">
+	import ResponsiveImage from '$lib/ResponsiveImage.svelte';
+	import RevealText from '$lib/RevealText.svelte';
 	import WidePhoto from '$lib/WidePhoto.svelte';
 
-	const items = [
-		'Structuur aanbrengen in de dag',
-		'Zelfredzaamheid en sociale vaardigheden versterken',
-		'Omgaan met emoties, spanning en verandering',
-		'Praktische stappen richting wonen, school, werk of dagbesteding'
+	const tracks = [
+		{
+			title: 'Jongeren',
+			text: 'Begeleiding wanneer school, thuis of het dagelijks leven vastloopt. Samen werken we aan rust, overzicht en zelfvertrouwen.'
+		},
+		{
+			title: 'Volwassenen',
+			text: 'Een veilige en vertrouwde plek waar jouw verhaal gehoord wordt. We werken stap voor stap aan kracht, rust en regie.'
+		},
+		{
+			title: 'Kind & gezin',
+			text: 'Ondersteuning voor gezinnen die meer balans, duidelijkheid en stabiliteit nodig hebben in de thuissituatie.'
+		},
+		{
+			title: 'Ambulante begeleiding',
+			text: 'Begeleiding aan huis bij administratie, financiën, huishouden en structuur in het dagelijks leven.'
+		}
 	];
 </script>
 
@@ -14,30 +28,76 @@
 </svelte:head>
 
 <section class="page-hero">
-	<h1>Doelgerichte begeleiding met aandacht voor de mens achter de vraag.</h1>
+	<h1>Begeleiding die aansluit bij jouw situatie.</h1>
 	<p>
-		Wij begeleiden mensen bij groei, herstel en zelfstandigheid. De aanpak is persoonlijk, praktisch
-		en gericht op duurzame vooruitgang.
+		Iedere jongere is uniek. Daarom bieden wij begeleiding die aansluit bij jouw persoonlijke
+		situatie. Wij werken samen met jou, stap voor stap, aan oplossingen die bij jou passen.
 	</p>
 </section>
 
-<WidePhoto src="/images/page-coaching.svg" alt="Abstracte visual over begeleiding en coaching" />
+<WidePhoto
+	src="/images/page-coaching.svg"
+	alt="Abstracte visual over begeleiding en coaching"
+	title="Een veilige en vertrouwde plek"
+	text="Samen kijken we naar wat jij nodig hebt en werken we stap voor stap aan meer kracht, zelfvertrouwen en rust."
+/>
 
 <section class="section split">
 	<div>
-		<h2>Wat begeleiding concreet kan opleveren.</h2>
+		<RevealText text="Stap voor stap naar rust, overzicht en richting." />
 	</div>
-	<ul class="feature-list reveal-children">
-		{#each items as item (item)}
-			<li>{item}</li>
+	<div class="reveal delay-1">
+		<ResponsiveImage
+			class="content-photo"
+			src="/images/content/richting-900.webp"
+			srcset="/images/content/richting-900.webp 900w, /images/content/richting-1200.webp 1200w"
+			sizes="(max-width: 900px) 100vw, 46vw"
+			alt="Wegwijzers als symbool voor richting vinden"
+		/>
+	</div>
+</section>
+
+<section class="section">
+	<div class="service-grid">
+		{#each tracks as track, index (track.title)}
+			<article class="service-card reveal" style={`--delay: ${index * 90}ms`}>
+				<span>0{index + 1}</span>
+				<h3>{track.title}</h3>
+				<p>{track.text}</p>
+			</article>
 		{/each}
-	</ul>
+	</div>
 </section>
 
 <section class="section quote-section reveal delay-1">
-	<blockquote>“Bij Samenbijeen staan we naast je, zodat jij vooruit kunt.”</blockquote>
+	<blockquote>“Bij Samenbijeen staan we naast je.”</blockquote>
 	<p>
-		We werken vanuit vertrouwen en helderheid. Waar nodig sluiten we aan bij bewezen methodieken,
-		zoals het 8-fasenmodel, zodat begeleiding meetbaar en begrijpelijk blijft.
+		We werken aan een passend dagritme, praktische vaardigheden en deelname aan school, werk,
+		vrijwilligerswerk of dagbesteding. Ook ondersteunen we bij het terugpakken van regie over het
+		eigen leven.
 	</p>
+</section>
+
+<section class="section split">
+	<div>
+		<RevealText text="Coaching traject Samenbijeen" />
+	</div>
+	<div class="copy-stack reveal delay-1">
+		<ResponsiveImage
+			class="content-photo"
+			src="/images/content/coaching-journey-900.webp"
+			srcset="/images/content/coaching-journey-900.webp 900w, /images/content/coaching-journey-1400.webp 1400w"
+			sizes="(max-width: 900px) 100vw, 46vw"
+			alt="Rustige reisomgeving als symbool voor afstand nemen en reflectie"
+		/>
+		<p>
+			Wij bieden coaching trajecten aan in binnen- en buitenland. Tijdelijk afstand nemen van de
+			dagelijkse omgeving kan helpen om patronen te doorbreken en ruimte te creëren voor rust,
+			overzicht en reflectie.
+		</p>
+		<p>
+			De trajecten kunnen variëren van een paar dagen of weekend tot langere trajecten. Het doel is
+			dat je sterker, bewuster en met meer vertrouwen terugkeert naar je dagelijks leven.
+		</p>
+	</div>
 </section>

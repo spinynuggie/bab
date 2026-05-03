@@ -3,10 +3,10 @@
 </svelte:head>
 
 <section class="page-hero">
-	<h1>Professionals die het verschil maken.</h1>
+	<h1>Neem contact op met Samenbijeen.</h1>
 	<p>
-		Zoek je hulp, wil je overleggen over een naaste, of heb je als organisatie flexibele
-		zorgprofessionals nodig? Neem contact op met Samenbijeen.
+		Heeft u vragen, behoefte aan advies of wilt u weten wat wij voor u of uw organisatie kunnen
+		betekenen? Neem gerust contact met ons op.
 	</p>
 </section>
 
@@ -24,7 +24,8 @@
 			Waar kunnen we mee helpen?
 			<select name="topic">
 				<option>Ik zoek hulp</option>
-				<option>Ik zoek een zorgprofessional</option>
+				<option>Ik zoek gekwalificeerde begeleiders</option>
+				<option>Ik wil solliciteren</option>
 				<option>Algemene vraag</option>
 			</select>
 		</label>
@@ -35,7 +36,7 @@
 		<button class="button primary" type="submit">Verstuur bericht</button>
 	</form>
 
-	<aside class="contact-card reveal delay-2">
+	<aside class="contact-visual contact-info-card reveal delay-2">
 		<img
 			class="contact-photo"
 			src="/images/contact-team.svg"
@@ -43,14 +44,15 @@
 			loading="lazy"
 			decoding="async"
 		/>
-		<h2>Voor iedere zorgvraag de juiste match.</h2>
-		<p>
-			Samenbijeen verbindt zorginstellingen met betrokken zorgverleners op flexibele basis,
-			gedetacheerd of in vaste dienst.
-		</p>
-		<div class="contact-lines">
-			<span>info@samenbijeen.nl</span>
-			<span>Nederland</span>
+		<div class="contact-info">
+			<strong>Contact</strong>
+			<p>Welkom bij Samenbijeen. Wij bieden betrokken en persoonlijke begeleiding op maat.</p>
+			<div class="contact-lines">
+				<span>info@samenbijeen.nl</span>
+				<span>06 2222 9975</span>
+				<span>Genemuidenstraat 208, unit 925, 2545 NZ Den Haag</span>
+				<span>Instagram: Samenbijeen</span>
+			</div>
 		</div>
 	</aside>
 </section>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import RevealText from '$lib/RevealText.svelte';
 	import { onMount } from 'svelte';
 
 	let heroElement: HTMLElement;
@@ -60,25 +61,26 @@
 	});
 
 	const highlights = [
-		'Begeleiding aan huis, op school, op werk of in de wijk',
-		'Een vaste begeleider waar dat kan, korte lijnen waar dat nodig is',
-		'Praktische ondersteuning voor cliënten, naasten en zorgorganisaties'
+		'Persoonlijke begeleiding op maat',
+		'Oprechte betrokkenheid en vertrouwen',
+		'Brede expertise voor jongeren en volwassenen',
+		'Stap voor stap werken aan zelfstandigheid'
 	];
 
 	const services = [
 		{
 			title: 'Ik zoek hulp',
-			text: 'Samen kijken we welke begeleiding past bij jouw situatie, tempo en doelen.',
+			text: 'Samen kijken we naar wat jij nodig hebt en werken we stap voor stap aan rust, structuur en zelfvertrouwen.',
 			href: '/ik-zoek-hulp'
 		},
 		{
 			title: 'Begeleiding / coaching',
-			text: 'Doelgerichte begeleiding bij structuur, zelfvertrouwen, sociale vaardigheden en herstel.',
+			text: 'Begeleiding bij rust, structuur, zelfvertrouwen en richting.',
 			href: '/begeleiding-coaching'
 		},
 		{
 			title: 'Zorg / ondersteuning',
-			text: 'Ondersteuning in het dagelijks leven, van ambulante begeleiding tot praktische zorg.',
+			text: 'Praktische ondersteuning in het dagelijks leven en bij zorgvragen.',
 			href: '/zorg-ondersteuning'
 		}
 	] as const;
@@ -86,15 +88,21 @@
 	const moments = [
 		{
 			src: '/images/story-care.svg',
-			alt: 'Abstracte illustratie over zorg en rust'
+			alt: 'Abstracte illustratie over zorg en rust',
+			title: 'Persoonlijke begeleiding op maat',
+			text: 'Iedere mens is uniek. Wij stemmen onze begeleiding volledig af op jouw persoonlijke situatie, wensen en mogelijkheden.'
 		},
 		{
 			src: '/images/story-coaching.svg',
-			alt: 'Abstracte illustratie over coaching en gesprek'
+			alt: 'Abstracte illustratie over coaching en gesprek',
+			title: 'Oprechte betrokkenheid',
+			text: 'Wij staan naast jou en bouwen aan een vertrouwensband waarin jij je gehoord en begrepen voelt.'
 		},
 		{
 			src: '/images/story-community.svg',
-			alt: 'Abstracte illustratie over samen in de wijk'
+			alt: 'Abstracte illustratie over samen in de wijk',
+			title: 'Werken aan zelfstandigheid',
+			text: 'Samen werken we stap voor stap aan meer zelfredzaamheid, stabiliteit en grip op het dagelijks leven.'
 		}
 	] as const;
 </script>
@@ -116,41 +124,48 @@
 	<div class="hero-visual" aria-hidden="true"></div>
 
 	<div class="hero-copy reveal">
-		<h1>Rustige hulp voor mensen die weer grip willen krijgen.</h1>
+		<h1>Samenbijeen geeft richting.</h1>
 		<p class="lede">
-			Samenbijeen helpt bij vragen die thuis, op school, op werk of in het dagelijks leven te groot
-			zijn geworden. We luisteren eerst, maken daarna pas een plan.
+			Wij begeleiden volwassenen en jongeren die extra ondersteuning nodig hebben om weer grip te
+			krijgen op hun leven. Samen kijken we naar wat nodig is en werken we stap voor stap aan rust,
+			structuur en zelfvertrouwen.
 		</p>
 		<div class="hero-actions">
 			<a class="button primary" href={resolve('/ik-zoek-hulp')}>Ik zoek hulp</a>
-			<a class="button secondary" href={resolve('/contact')}>Ik zoek een professional</a>
+			<a class="button secondary" href={resolve('/solliciteren')}>Kom werken bij ons</a>
 		</div>
 	</div>
 </section>
 
-<section class="image-story reveal delay-1">
-	<div>
-		<h2>Niet iedereen heeft dezelfde soort hulp nodig.</h2>
+<section class="image-story centered reveal delay-1">
+	<div class="section-heading">
+		<RevealText text="Overzicht, rust en vertrouwen." />
 		<p>
-			De ene persoon heeft vooral structuur nodig. De ander zoekt rust in het gezin, ondersteuning
-			bij zelfstandigheid of een professional die tijdelijk kan bijspringen.
+			Bij Samenbijeen geloven we dat iedereen recht heeft op een volwaardig en betekenisvol leven.
+			Wij bieden persoonlijke begeleiding die aansluit bij de individuele situatie.
 		</p>
 	</div>
 	<div class="image-row reveal-children">
-		{#each moments as moment (moment.src)}
-			<img src={moment.src} alt={moment.alt} loading="lazy" decoding="async" />
+		{#each moments as moment, index (moment.src)}
+			<figure class="image-tile" style={`--card-delay: ${index * 160}ms`}>
+				<img src={moment.src} alt={moment.alt} loading="lazy" decoding="async" />
+				<figcaption>
+					<strong>{moment.title}</strong>
+					<span>{moment.text}</span>
+				</figcaption>
+			</figure>
 		{/each}
 	</div>
 </section>
 
 <section class="section split">
 	<div class="reveal">
-		<h2>Zorg die klein genoeg blijft om iemand echt te zien.</h2>
+		<RevealText text="Onze begeleiding" />
 	</div>
 	<div class="copy-stack reveal delay-1">
 		<p>
-			Wij helpen mensen vaardigheden ontwikkelen, zelfvertrouwen versterken en zelfstandigheid
-			vergroten. Ons doel is dat iemand weer steviger kan deelnemen aan het dagelijks leven.
+			Onze missie is om jongeren en volwassenen te begeleiden op weg naar stabiliteit en
+			zelfredzaamheid. De begeleiding is gebaseerd op betrokkenheid, aandacht en maatwerk.
 		</p>
 		<ul class="check-list">
 			{#each highlights as highlight (highlight)}
@@ -160,9 +175,25 @@
 	</div>
 </section>
 
+<section class="section split">
+	<div class="reveal">
+		<RevealText text="Missie en visie" />
+	</div>
+	<div class="copy-stack reveal delay-1">
+		<p>
+			Wij geloven dat niemand er alleen voor hoeft te staan. Samen kijken we naar wat iemand nodig
+			heeft om weer grip, vertrouwen en richting te vinden.
+		</p>
+		<p>
+			Echte verandering ontstaat wanneer mensen zich gezien, gehoord en ondersteund voelen. Daarom
+			werken wij vanuit verbinding, betrokkenheid en samenwerking.
+		</p>
+	</div>
+</section>
+
 <section class="section">
 	<div class="section-heading reveal">
-		<h2>Waar kom je voor?</h2>
+		<RevealText text="Plan een intake in" />
 	</div>
 
 	<div class="service-grid">
@@ -183,7 +214,10 @@
 
 <section class="cta-band reveal">
 	<div>
-		<h2>Een kort gesprek is vaak genoeg om richting te vinden.</h2>
+		<h2>Samen maken we het verschil.</h2>
 	</div>
-	<a class="button primary" href={resolve('/contact')}>Neem contact op</a>
+	<div class="hero-actions">
+		<a class="button primary" href={resolve('/contact')}>Neem contact op</a>
+		<a class="button secondary" href={resolve('/solliciteren')}>Solliciteren</a>
+	</div>
 </section>

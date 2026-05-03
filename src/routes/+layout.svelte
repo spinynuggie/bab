@@ -3,7 +3,7 @@
 	import { page } from '$app/state';
 	import { cubicOut } from 'svelte/easing';
 	import { prefersReducedMotion, Tween } from 'svelte/motion';
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 
@@ -11,9 +11,10 @@
 	let previousPath = $state(page.url.pathname);
 	let menuOpen = $state(false);
 	let headerProgress = $state(page.url.pathname === '/' ? 0 : 1);
+	let refreshReveals = () => {};
 
 	const routeProgress = new Tween(1, {
-		duration: 560,
+		duration: 760,
 		easing: cubicOut
 	});
 
@@ -54,6 +55,20 @@
 
 	onMount(() => {
 		let frame = 0;
+		let revealObserver: IntersectionObserver | undefined;
+		const revealSelector = [
+			'.reveal',
+			'.page-hero',
+			'.section',
+			'.contact-layout',
+			'.site-footer',
+			'.reveal-children',
+			'.image-tile',
+			'.wide-photo',
+			'.contact-visual',
+			'.service-card',
+			'.process-step'
+		].join(',');
 
 		const update = () => {
 			frame = 0;
@@ -69,10 +84,40 @@
 		window.addEventListener('scroll', schedule, { passive: true });
 		window.addEventListener('resize', schedule);
 
+		if (prefersReducedMotion.current) {
+			document.documentElement.classList.add('reveal-disabled');
+			refreshReveals = () => {};
+		} else {
+			document.documentElement.classList.add('reveal-enabled');
+			revealObserver = new IntersectionObserver(
+				(entries) => {
+					for (const entry of entries) {
+						if (!entry.isIntersecting) continue;
+						entry.target.classList.add('is-visible');
+						revealObserver?.unobserve(entry.target);
+					}
+				},
+				{ rootMargin: '0px 0px -12% 0px', threshold: 0.16 }
+			);
+
+			refreshReveals = () => {
+				void tick().then(() => {
+					document.querySelectorAll<HTMLElement>(revealSelector).forEach((element) => {
+						if (element.classList.contains('is-visible')) return;
+						revealObserver?.observe(element);
+					});
+				});
+			};
+
+			refreshReveals();
+		}
+
 		return () => {
 			if (frame) cancelAnimationFrame(frame);
 			window.removeEventListener('scroll', schedule);
 			window.removeEventListener('resize', schedule);
+			revealObserver?.disconnect();
+			document.documentElement.classList.remove('reveal-enabled', 'reveal-disabled');
 		};
 	});
 
@@ -94,7 +139,8 @@
 		}
 
 		routeProgress.set(0, { duration: 0 });
-		routeProgress.set(1, { duration: 620, easing: cubicOut });
+		routeProgress.set(1, { duration: 820, easing: cubicOut });
+		refreshReveals();
 	});
 </script>
 
@@ -103,13 +149,13 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
-		href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+		href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"
 		rel="stylesheet"
 	/>
 	<title>Samenbijeen | Persoonlijke zorg en begeleiding</title>
 	<meta
 		name="description"
-		content="Samenbijeen verbindt mensen met een zorgvraag aan betrokken professionals voor begeleiding, coaching en ondersteuning."
+		content="Samenbijeen biedt betrokken en persoonlijke begeleiding op maat."
 	/>
 </svelte:head>
 
@@ -164,14 +210,20 @@
 	<footer class="site-footer">
 		<div>
 			<strong>Samenbijeen</strong>
-			<p>
-				Persoonlijke begeleiding, coaching en ondersteuning voor jeugd, volwassenen en organisaties.
-			</p>
+			<p>Betrokken en persoonlijke begeleiding op maat.</p>
 		</div>
 		<div class="footer-links">
 			<a href={resolve('/contact')}>Contact</a>
+			<a href={resolve('/solliciteren')}>Solliciteren</a>
 			<a href={resolve('/zorg-ondersteuning')}>Zorg / ondersteuning</a>
 			<a href={resolve('/begeleiding-coaching')}>Begeleiding / coaching</a>
+		</div>
+		<div class="footer-contact">
+			<span>Genemuidenstraat 208, unit 925</span>
+			<span>2545 NZ Den Haag</span>
+			<a href="mailto:info@samenbijeen.nl">info@samenbijeen.nl</a>
+			<a href="tel:+31622229975">06 2222 9975</a>
+			<span>Instagram: Samenbijeen</span>
 		</div>
 	</footer>
 </div>
