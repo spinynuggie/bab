@@ -21,14 +21,22 @@
 	const navItems = [
 		{ href: '/', label: 'Home' },
 		{ href: '/over-ons', label: 'Over ons' },
-		{ href: '/ik-zoek-hulp', label: 'Ik zoek hulp' },
 		{ href: '/begeleiding-coaching', label: 'Begeleiding' },
-		{ href: '/zorg-ondersteuning', label: 'Zorg' },
+		{ href: '/samenwerkingen', label: 'Samenwerkingen' },
 		{ href: '/contact', label: 'Contact' }
 	] as const;
 
-	const isActive = (href: string) =>
-		href === '/' ? page.url.pathname === '/' : page.url.pathname === href;
+	const hrefParts = (href: string) => {
+		const [path, hash] = href.split('#');
+		return { path, hash: hash ? `#${hash}` : '' };
+	};
+	const isActive = (href: string) => {
+		const { path, hash } = hrefParts(href);
+
+		if (href === '/') return page.url.pathname === '/';
+		if (hash) return page.url.pathname === path && page.url.hash === hash;
+		return page.url.pathname === path && !page.url.hash;
+	};
 	const isHome = $derived(page.url.pathname === '/');
 	const ease = (value: number) => value * value * (3 - 2 * value);
 	const delayed = (value: number, start: number) =>
@@ -36,9 +44,9 @@
 	const headerTone = $derived(isHome ? headerProgress : 1);
 	const headerSurface = $derived(isHome ? ease(delayed(headerProgress, 0.42)) : 1);
 	const headerColor = $derived(
-		`rgb(${Math.round(255 + (16 - 255) * headerTone)}, ${Math.round(
-			255 + (45 - 255) * headerTone
-		)}, ${Math.round(255 + (84 - 255) * headerTone)})`
+		`rgb(${Math.round(255 + (20 - 255) * headerTone)}, ${Math.round(
+			255 + (35 - 255) * headerTone
+		)}, ${Math.round(255 + (59 - 255) * headerTone)})`
 	);
 	const headerNavColor = $derived(
 		`rgb(${Math.round(255 + (55 - 255) * headerTone)}, ${Math.round(
@@ -63,9 +71,6 @@
 			'.contact-layout',
 			'.site-footer',
 			'.reveal-children',
-			'.image-tile',
-			'.wide-photo',
-			'.contact-visual',
 			'.service-card'
 		].join(',');
 
@@ -151,7 +156,7 @@
 		href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"
 		rel="stylesheet"
 	/>
-	<title>Samenbijeen | Persoonlijke zorg en begeleiding</title>
+	<title>Samenbijeen | Begeleiding op maat</title>
 	<meta
 		name="description"
 		content="Samenbijeen biedt betrokken en persoonlijke begeleiding op maat."
@@ -171,7 +176,7 @@
 >
 	<header class="site-header">
 		<a class="brand" href={resolve('/')} aria-label="Samenbijeen home">
-			<strong>Samenbijeen</strong>
+			<img src="/images/samenbijeen-logo.png" alt="Samenbijeen begeleiding op maat" />
 		</a>
 
 		<button
@@ -208,14 +213,19 @@
 
 	<footer class="site-footer">
 		<div>
-			<strong>Samenbijeen</strong>
+			<img
+				class="footer-logo"
+				src="/images/samenbijeen-logo.png"
+				alt="Samenbijeen begeleiding op maat"
+			/>
 			<p>Betrokken en persoonlijke begeleiding op maat.</p>
 		</div>
 		<div class="footer-links">
+			<a href={resolve('/over-ons')}>Over ons</a>
+			<a href={resolve('/begeleiding-coaching')}>Begeleiding</a>
+			<a href={resolve('/samenwerkingen')}>Samenwerkingen</a>
 			<a href={resolve('/contact')}>Contact</a>
 			<a href={resolve('/solliciteren')}>Solliciteren</a>
-			<a href={resolve('/zorg-ondersteuning')}>Zorg / ondersteuning</a>
-			<a href={resolve('/begeleiding-coaching')}>Begeleiding / coaching</a>
 		</div>
 		<div class="footer-contact">
 			<span>Genemuidenstraat 208, unit 925</span>

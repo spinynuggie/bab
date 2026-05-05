@@ -23,7 +23,7 @@
 		<label>
 			Waar kunnen we mee helpen?
 			<select name="topic">
-				<option>Ik zoek hulp</option>
+				<option>Begeleiding</option>
 				<option>Ik zoek gekwalificeerde begeleiders</option>
 				<option>Ik wil solliciteren</option>
 				<option>Algemene vraag</option>
@@ -36,14 +36,8 @@
 		<button class="button primary" type="submit">Verstuur bericht</button>
 	</form>
 
-	<aside class="contact-visual contact-info-card reveal delay-2">
-		<img
-			class="contact-photo"
-			src="/images/contact-team.svg"
-			alt="Abstracte visual over zorgteam overleg"
-			loading="lazy"
-			decoding="async"
-		/>
+	<aside class="contact-card-real reveal delay-2">
+		<img src="/images/samenbijeen-logo.png" alt="Samenbijeen begeleiding op maat" />
 		<div class="contact-info">
 			<strong>Contact</strong>
 			<p>Welkom bij Samenbijeen. Wij bieden betrokken en persoonlijke begeleiding op maat.</p>

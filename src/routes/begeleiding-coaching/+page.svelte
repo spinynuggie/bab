@@ -20,6 +20,15 @@
 			text: 'Begeleiding aan huis bij administratie, financiën, huishouden en structuur in het dagelijks leven.'
 		}
 	];
+
+	const support = [
+		'Administratie en financiën',
+		'Huishoudelijke ondersteuning',
+		'Structuur in het dagelijks leven',
+		'Passend dagritme opbouwen',
+		'Werk, vrijwilligerswerk of dagbesteding',
+		'Regie over het eigen leven terugpakken'
+	];
 </script>
 
 <svelte:head>
@@ -68,6 +77,35 @@
 		vrijwilligerswerk of dagbesteding. Ook ondersteunen we bij het terugpakken van regie over het
 		eigen leven.
 	</p>
+</section>
+
+<section class="section split guidance-section">
+	<div class="copy-stack reveal">
+		<RevealText text="Ambulante begeleiding" />
+		<p>
+			Samenbijeen biedt ambulante begeleiding aan huis voor jongeren, volwassenen en gezinnen die
+			vastlopen in het dagelijks leven. Samen werken we aan meer rust, structuur en stabiliteit,
+			zodat je zo zelfstandig mogelijk kunt blijven wonen.
+		</p>
+		<p>
+			Wij ondersteunen bij onder andere administratie, financiën, het huishouden en het aanbrengen
+			van structuur in het dagelijks leven.
+		</p>
+		<div class="glass-pills inline-pills">
+			{#each support as item (item)}
+				<span>{item}</span>
+			{/each}
+		</div>
+	</div>
+	<div class="reveal delay-1">
+		<ResponsiveImage
+			class="content-photo"
+			src="/images/content/road-900.webp"
+			srcset="/images/content/road-900.webp 900w, /images/content/road-1400.webp 1400w"
+			sizes="(max-width: 900px) 100vw, 46vw"
+			alt="Een open weg als symbool voor stap voor stap vooruitgaan"
+		/>
+	</div>
 </section>
 
 <section class="section split coaching-section">

@@ -20,7 +20,7 @@
 			244 + (109 - 244) * heroProgress
 		)}, ${Math.round(255 + (134 - 255) * heroProgress)})`
 	);
-	const heroButtonText = $derived(heroProgress < 0.5 ? '#102d54' : '#ffffff');
+	const heroButtonText = $derived(heroProgress < 0.5 ? '#17233b' : '#ffffff');
 
 	onMount(() => {
 		let frame = 0;
@@ -69,19 +69,19 @@
 
 	const services = [
 		{
-			title: 'Ik zoek hulp',
+			title: 'Begeleiding',
 			text: 'Samen kijken we naar wat jij nodig hebt en werken we stap voor stap aan rust, structuur en zelfvertrouwen.',
-			href: '/ik-zoek-hulp'
-		},
-		{
-			title: 'Begeleiding / coaching',
-			text: 'Begeleiding bij rust, structuur, zelfvertrouwen en richting.',
 			href: '/begeleiding-coaching'
 		},
 		{
-			title: 'Zorg / ondersteuning',
-			text: 'Praktische ondersteuning in het dagelijks leven en bij zorgvragen.',
-			href: '/zorg-ondersteuning'
+			title: 'Samenwerkingen',
+			text: 'Ondersteuning voor zorgorganisaties, thuiszorg, gemeenten en samenwerkingspartners.',
+			href: '/samenwerkingen'
+		},
+		{
+			title: 'Contact',
+			text: 'Heeft u vragen, behoefte aan advies of wilt u weten wat wij voor u kunnen betekenen?',
+			href: '/contact'
 		}
 	] as const;
 
@@ -131,13 +131,13 @@
 			structuur en zelfvertrouwen.
 		</p>
 		<div class="hero-actions">
-			<a class="button primary" href={resolve('/ik-zoek-hulp')}>Ik zoek hulp</a>
+			<a class="button primary" href={resolve('/begeleiding-coaching')}>Bekijk begeleiding</a>
 			<a class="button secondary" href={resolve('/solliciteren')}>Kom werken bij ons</a>
 		</div>
 	</div>
 </section>
 
-<section class="image-story centered reveal delay-1">
+<section class="section centered-support">
 	<div class="section-heading">
 		<RevealText text="Overzicht, rust en vertrouwen." />
 		<p>
@@ -145,15 +145,12 @@
 			Wij bieden persoonlijke begeleiding die aansluit bij de individuele situatie.
 		</p>
 	</div>
-	<div class="image-row reveal-children">
+	<div class="service-grid">
 		{#each moments as moment, index (moment.src)}
-			<figure class="image-tile" style={`--card-delay: ${index * 160}ms`}>
-				<img src={moment.src} alt={moment.alt} loading="lazy" decoding="async" />
-				<figcaption>
-					<strong>{moment.title}</strong>
-					<span>{moment.text}</span>
-				</figcaption>
-			</figure>
+			<article class="service-card reveal" style={`--delay: ${index * 100}ms`}>
+				<h3>{moment.title}</h3>
+				<p>{moment.text}</p>
+			</article>
 		{/each}
 	</div>
 </section>
