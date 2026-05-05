@@ -2,11 +2,12 @@
 	<title>Contact | Samenbijeen</title>
 </svelte:head>
 
-<section class="page-hero">
-	<h1>Neem contact op met Samenbijeen.</h1>
+<section class="page-hero compact centered-page-hero">
+	<h1>Contact</h1>
 	<p>
-		Heeft u vragen, behoefte aan advies of wilt u weten wat wij voor u of uw organisatie kunnen
-		betekenen? Neem gerust contact met ons op.
+		Welkom bij Samenbijeen. Wij bieden betrokken en persoonlijke begeleiding op maat. Heeft u
+		vragen, behoefte aan advies of wilt u weten wat wij voor u of uw organisatie kunnen betekenen?
+		Neem gerust contact met ons op.
 	</p>
 </section>
 
@@ -40,11 +41,11 @@
 		<img src="/images/samenbijeen-logo.png" alt="Samenbijeen begeleiding op maat" />
 		<div class="contact-info">
 			<strong>Contact</strong>
-			<p>Welkom bij Samenbijeen. Wij bieden betrokken en persoonlijke begeleiding op maat.</p>
+			<p>Neem gerust contact met ons op.</p>
 			<div class="contact-lines">
 				<span>info@samenbijeen.nl</span>
 				<span>06 2222 9975</span>
-				<span>Genemuidenstraat 208, unit 925, 2545 NZ Den Haag</span>
+				<span>Genemuidenstraat 208 unit 9, 2545 NZ Den Haag</span>
 				<span>Instagram: Samenbijeen</span>
 			</div>
 		</div>

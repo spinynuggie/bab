@@ -7,32 +7,21 @@
 	<title>Samenwerkingen | Samenbijeen</title>
 </svelte:head>
 
-<section class="page-hero">
+<section class="page-hero compact centered-page-hero">
 	<h1>Samenwerkingen</h1>
 	<p>
 		Wij ondersteunen zorgorganisaties bij het creëren van een veilige en professioneel ingerichte
 		zorglocatie van A tot Z.
 	</p>
-</section>
-
-<section class="section split">
-	<div class="reveal">
-		<RevealText text="Opzetten van zorglocaties" />
-	</div>
-	<div class="copy-stack reveal delay-1">
-		<p>
-			Denk hierbij aan structuur, aansturing van zorgteams, veiligheidsbeleid, werkprocessen,
-			protocollen, ervaren begeleiders en begeleidingsmethodieken.
-		</p>
-		<p>
-			Daarnaast denken wij mee over kwaliteitseisen, verantwoordelijkheden en een duurzame
-			inrichting van de zorgverlening.
-		</p>
-		<p>
-			Met onze praktijkervaring binnen de welzijnssector bieden wij een stevige basis waarop een
-			zorglocatie professioneel en toekomstbestendig kan functioneren.
-		</p>
-	</div>
+	<p>
+		Denk hierbij aan structuur, aansturing van zorgteams, veiligheidsbeleid, werkprocessen,
+		protocollen, ervaren begeleiders en begeleidingsmethodieken. Daarnaast denken wij mee over
+		kwaliteitseisen, verantwoordelijkheden en een duurzame inrichting van de zorgverlening.
+	</p>
+	<p>
+		Met onze praktijkervaring binnen de welzijnssector bieden wij een stevige basis waarop een
+		zorglocatie professioneel en toekomstbestendig kan functioneren.
+	</p>
 </section>
 
 <ResponsiveImage
@@ -50,11 +39,8 @@
 	<div class="copy-stack reveal delay-1">
 		<p>
 			Wij ondersteunen zorgorganisaties, thuiszorg en gemeenten bij het vinden van gekwalificeerde
-			begeleiders.
-		</p>
-		<p>
-			Dit kan gaan om complexe situaties waarin begeleiding nodig is, of waarbij cliënten tijdelijk
-			of structureel 24-uurs begeleiding of ondersteuning nodig hebben.
+			begeleiders. Dit kan gaan om complexe situaties waarin begeleiding nodig is, of waarbij
+			cliënten tijdelijk of structureel 24-uurs begeleiding of ondersteuning nodig hebben.
 		</p>
 		<p>
 			Ons doel is het creëren van stabiliteit, zodat passende ondersteuning gewaarborgd blijft. Wij

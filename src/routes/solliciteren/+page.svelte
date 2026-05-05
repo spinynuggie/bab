@@ -15,11 +15,12 @@
 	<title>Solliciteren | Samenbijeen</title>
 </svelte:head>
 
-<section class="page-hero">
+<section class="page-hero compact centered-page-hero">
 	<h1>Kom je werken bij Samenbijeen?</h1>
 	<p>
 		Samen maken we het verschil. Met langdurige trajecten en projecten zetten wij ons in voor
-		begeleiding en ondersteuning van hoge kwaliteit.
+		begeleiding en ondersteuning van hoge kwaliteit. Wij werken vanuit betrokkenheid, aandacht en
+		professionaliteit.
 	</p>
 	<a class="button primary" href={resolve('/contact')}>Neem contact op</a>
 </section>
@@ -37,8 +38,8 @@
 	<div class="copy-stack reveal delay-1">
 		<RevealText text="Samen sterk" />
 		<p>
-			Wij werken vanuit betrokkenheid, aandacht en professionaliteit. Door maatwerk te bieden,
-			bouwen we samen elke dag verder aan sterke en betekenisvolle begeleiding.
+			Door maatwerk te bieden, bouwen we samen elke dag verder aan sterke en betekenisvolle
+			begeleiding.
 		</p>
 		<ul class="check-list">
 			{#each points as point (point)}

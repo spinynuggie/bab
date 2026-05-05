@@ -228,7 +228,7 @@
 			<a href={resolve('/solliciteren')}>Solliciteren</a>
 		</div>
 		<div class="footer-contact">
-			<span>Genemuidenstraat 208, unit 925</span>
+			<span>Genemuidenstraat 208 unit 9</span>
 			<span>2545 NZ Den Haag</span>
 			<a href="mailto:info@samenbijeen.nl">info@samenbijeen.nl</a>
 			<a href="tel:+31622229975">06 2222 9975</a>

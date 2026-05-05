@@ -20,7 +20,7 @@
 			244 + (109 - 244) * heroProgress
 		)}, ${Math.round(255 + (134 - 255) * heroProgress)})`
 	);
-	const heroButtonText = $derived(heroProgress < 0.5 ? '#17233b' : '#ffffff');
+	const buttonsSwapped = $derived(heroProgress > 0.56);
 
 	onMount(() => {
 		let frame = 0;
@@ -60,17 +60,10 @@
 		};
 	});
 
-	const highlights = [
-		'Persoonlijke begeleiding op maat',
-		'Oprechte betrokkenheid en vertrouwen',
-		'Brede expertise voor jongeren en volwassenen',
-		'Stap voor stap werken aan zelfstandigheid'
-	];
-
 	const services = [
 		{
 			title: 'Begeleiding',
-			text: 'Samen kijken we naar wat jij nodig hebt en werken we stap voor stap aan rust, structuur en zelfvertrouwen.',
+			text: 'Persoonlijke en doelgerichte begeleiding voor jongeren, volwassenen en gezinnen.',
 			href: '/begeleiding-coaching'
 		},
 		{
@@ -85,22 +78,16 @@
 		}
 	] as const;
 
-	const moments = [
+	const values = [
 		{
-			src: '/images/story-care.svg',
-			alt: 'Abstracte illustratie over zorg en rust',
 			title: 'Persoonlijke begeleiding op maat',
 			text: 'Iedere mens is uniek. Wij stemmen onze begeleiding volledig af op jouw persoonlijke situatie, wensen en mogelijkheden.'
 		},
 		{
-			src: '/images/story-coaching.svg',
-			alt: 'Abstracte illustratie over coaching en gesprek',
 			title: 'Oprechte betrokkenheid',
 			text: 'Wij staan naast jou en bouwen aan een vertrouwensband waarin jij je gehoord en begrepen voelt.'
 		},
 		{
-			src: '/images/story-community.svg',
-			alt: 'Abstracte illustratie over samen in de wijk',
 			title: 'Werken aan zelfstandigheid',
 			text: 'Samen werken we stap voor stap aan meer zelfredzaamheid, stabiliteit en grip op het dagelijks leven.'
 		}
@@ -119,20 +106,27 @@
 	style:--hero-content-y={`${heroContentY}px`}
 	style:--hero-text={heroTextColor}
 	style:--hero-muted={heroMutedColor}
-	style:--hero-button-text={heroButtonText}
 >
 	<div class="hero-visual" aria-hidden="true"></div>
 
 	<div class="hero-copy reveal">
 		<h1>Samenbijeen geeft richting.</h1>
 		<p class="lede">
-			Wij begeleiden volwassenen en jongeren die extra ondersteuning nodig hebben om weer grip te
-			krijgen op hun leven. Samen kijken we naar wat nodig is en werken we stap voor stap aan rust,
-			structuur en zelfvertrouwen.
+			Samenbijeen begeleidt volwassenen en jongeren die extra ondersteuning nodig hebben om weer
+			grip te krijgen op hun leven. Samen kijken we naar wat ze nodig hebben en werken we stap voor
+			stap aan rust, structuur en zelfvertrouwen, zodat zij weer vooruit kunnen.
 		</p>
 		<div class="hero-actions">
-			<a class="button primary" href={resolve('/begeleiding-coaching')}>Bekijk begeleiding</a>
-			<a class="button secondary" href={resolve('/solliciteren')}>Kom werken bij ons</a>
+			<a
+				class="button hero-primary"
+				class:is-soft={buttonsSwapped}
+				href={resolve('/begeleiding-coaching')}>Bekijk begeleiding</a
+			>
+			<a
+				class="button hero-secondary"
+				class:is-filled={buttonsSwapped}
+				href={resolve('/solliciteren')}>Kom werken bij ons</a
+			>
 		</div>
 	</div>
 </section>
@@ -142,47 +136,35 @@
 		<RevealText text="Overzicht, rust en vertrouwen." />
 		<p>
 			Bij Samenbijeen geloven we dat iedereen recht heeft op een volwaardig en betekenisvol leven.
-			Wij bieden persoonlijke begeleiding die aansluit bij de individuele situatie.
+			Wij begeleiden zowel volwassenen als jongeren.
 		</p>
 	</div>
-	<div class="service-grid">
-		{#each moments as moment, index (moment.src)}
-			<article class="service-card reveal" style={`--delay: ${index * 100}ms`}>
-				<h3>{moment.title}</h3>
-				<p>{moment.text}</p>
-			</article>
-		{/each}
-	</div>
-</section>
-
-<section class="section centered-support">
-	<div class="section-heading reveal">
-		<RevealText text="Onze begeleiding" />
+	<div class="copy-stack home-copy reveal delay-1">
 		<p>
-			Onze missie is om jongeren en volwassenen te begeleiden op weg naar stabiliteit en
-			zelfredzaamheid. De begeleiding is gebaseerd op betrokkenheid, aandacht en maatwerk.
+			Wij bieden persoonlijke begeleiding die aansluit bij de individuele situatie. Hierbij kan
+			gedacht worden aan ondersteuning bij administratie, huishoudelijke hulp en begeleiding gericht
+			op het (her)vinden van regie over het eigen leven.
+		</p>
+		<p>
+			Onze missie is om hen te begeleiden op weg naar stabiliteit en zelfredzaamheid. De begeleiding
+			is gebaseerd op betrokkenheid, aandacht en maatwerk. Samenbijeen zet zich ervoor in dat zij
+			weer kunnen deelnemen aan de maatschappij en vooruitgang kunnen boeken in het dagelijks leven.
+			Bij Samenbijeen staan we naast hen.
 		</p>
 	</div>
-	<ul class="glass-pills reveal">
-		{#each highlights as highlight (highlight)}
-			<li>{highlight}</li>
-		{/each}
-	</ul>
 </section>
 
 <section class="section split">
 	<div class="reveal">
-		<RevealText text="Missie en visie" />
+		<RevealText text="Onze begeleiding" />
 	</div>
 	<div class="copy-stack reveal delay-1">
+		<h3>Persoonlijke begeleiding op maat</h3>
 		<p>
-			Wij geloven dat niemand er alleen voor hoeft te staan. Samen kijken we naar wat iemand nodig
-			heeft om weer grip, vertrouwen en richting te vinden.
+			Iedere mens is uniek. Wij stemmen onze begeleiding volledig af op jouw persoonlijke situatie,
+			wensen en mogelijkheden.
 		</p>
-		<p>
-			Echte verandering ontstaat wanneer mensen zich gezien, gehoord en ondersteund voelen. Daarom
-			werken wij vanuit verbinding, betrokkenheid en samenwerking.
-		</p>
+		<a class="button secondary" href={resolve('/begeleiding-coaching')}>Bekijk begeleiding</a>
 	</div>
 </section>
 
@@ -207,9 +189,29 @@
 	</div>
 </section>
 
+<section class="section centered-support">
+	<div class="section-heading reveal">
+		<RevealText text="Waar wij voor staan" />
+	</div>
+	<div class="service-grid">
+		{#each values as value, index (value.title)}
+			<article class="service-card reveal" style={`--delay: ${index * 100}ms`}>
+				<h3>{value.title}</h3>
+				<p>{value.text}</p>
+			</article>
+		{/each}
+	</div>
+</section>
+
 <section class="cta-band reveal">
 	<div>
-		<h2>Samen maken we het verschil.</h2>
+		<h2>Kom je werken bij Samenbijeen?</h2>
+		<p>
+			Samen maken we het verschil. Met langdurige trajecten en projecten zetten wij ons in voor
+			begeleiding en ondersteuning van hoge kwaliteit. Wij werken vanuit betrokkenheid, aandacht en
+			professionaliteit. Door maatwerk te bieden, bouwen we samen elke dag verder aan sterke en
+			betekenisvolle begeleiding.
+		</p>
 	</div>
 	<div class="hero-actions">
 		<a class="button primary" href={resolve('/contact')}>Neem contact op</a>
